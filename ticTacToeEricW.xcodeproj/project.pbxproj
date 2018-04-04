@@ -17,7 +17,9 @@
 		FA2546F32020E3F8002A7AB7 /* ticTacToeEricWUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2546F22020E3F8002A7AB7 /* ticTacToeEricWUITests.swift */; };
 		FA2547032020F470002A7AB7 /* crossandnought.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2547022020F470002A7AB7 /* crossandnought.swift */; };
 		FA26A8F42020FA1F002021D5 /* nextmove.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA26A8F32020FA1F002021D5 /* nextmove.swift */; };
-		FA26A8F820210163002021D5 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA26A8F720210163002021D5 /* File.swift */; };
+		FA2C0A2820756F1C006A4800 /* collectionview.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2C0A2720756F1C006A4800 /* collectionview.swift */; };
+		FA30E8412072BA7100947031 /* tournamentPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA30E8402072BA7100947031 /* tournamentPlay.swift */; };
+		FA30E8432072BB4300947031 /* noughtyplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA30E8422072BB4300947031 /* noughtyplay.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +56,9 @@
 		FA2546F42020E3F8002A7AB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA2547022020F470002A7AB7 /* crossandnought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = crossandnought.swift; sourceTree = "<group>"; };
 		FA26A8F32020FA1F002021D5 /* nextmove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nextmove.swift; sourceTree = "<group>"; };
-		FA26A8F720210163002021D5 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		FA2C0A2720756F1C006A4800 /* collectionview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = collectionview.swift; sourceTree = "<group>"; };
+		FA30E8402072BA7100947031 /* tournamentPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tournamentPlay.swift; sourceTree = "<group>"; };
+		FA30E8422072BB4300947031 /* noughtyplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noughtyplay.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,7 @@
 		FA2546C32020E3F7002A7AB7 = {
 			isa = PBXGroup;
 			children = (
+				FA2C0A2420756CBE006A4800 /* uiViewFolder */,
 				FA2546CE2020E3F7002A7AB7 /* ticTacToeEricW */,
 				FA2546E62020E3F8002A7AB7 /* ticTacToeEricWTests */,
 				FA2546F12020E3F8002A7AB7 /* ticTacToeEricWUITests */,
@@ -107,14 +112,12 @@
 			children = (
 				FA2546CF2020E3F7002A7AB7 /* AppDelegate.swift */,
 				FA2546D12020E3F7002A7AB7 /* ViewController.swift */,
-				FA2546D32020E3F7002A7AB7 /* Main.storyboard */,
 				FA2546D92020E3F8002A7AB7 /* Assets.xcassets */,
 				FA2546DB2020E3F8002A7AB7 /* LaunchScreen.storyboard */,
 				FA2546DE2020E3F8002A7AB7 /* Info.plist */,
 				FA2546D62020E3F8002A7AB7 /* ticTacToeEricW.xcdatamodeld */,
-				FA2547022020F470002A7AB7 /* crossandnought.swift */,
 				FA26A8F32020FA1F002021D5 /* nextmove.swift */,
-				FA26A8F720210163002021D5 /* File.swift */,
+				FA30E83D2072B96000947031 /* PlayerGroups */,
 			);
 			path = ticTacToeEricW;
 			sourceTree = "<group>";
@@ -135,6 +138,25 @@
 				FA2546F42020E3F8002A7AB7 /* Info.plist */,
 			);
 			path = ticTacToeEricWUITests;
+			sourceTree = "<group>";
+		};
+		FA2C0A2420756CBE006A4800 /* uiViewFolder */ = {
+			isa = PBXGroup;
+			children = (
+				FA2546D32020E3F7002A7AB7 /* Main.storyboard */,
+				FA2C0A2720756F1C006A4800 /* collectionview.swift */,
+			);
+			path = uiViewFolder;
+			sourceTree = "<group>";
+		};
+		FA30E83D2072B96000947031 /* PlayerGroups */ = {
+			isa = PBXGroup;
+			children = (
+				FA2547022020F470002A7AB7 /* crossandnought.swift */,
+				FA30E8402072BA7100947031 /* tournamentPlay.swift */,
+				FA30E8422072BB4300947031 /* noughtyplay.swift */,
+			);
+			path = PlayerGroups;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,10 +293,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA30E8432072BB4300947031 /* noughtyplay.swift in Sources */,
 				FA2546D22020E3F7002A7AB7 /* ViewController.swift in Sources */,
-				FA26A8F820210163002021D5 /* File.swift in Sources */,
+				FA30E8412072BA7100947031 /* tournamentPlay.swift in Sources */,
 				FA2547032020F470002A7AB7 /* crossandnought.swift in Sources */,
 				FA26A8F42020FA1F002021D5 /* nextmove.swift in Sources */,
+				FA2C0A2820756F1C006A4800 /* collectionview.swift in Sources */,
 				FA2546D82020E3F8002A7AB7 /* ticTacToeEricW.xcdatamodeld in Sources */,
 				FA2546D02020E3F7002A7AB7 /* AppDelegate.swift in Sources */,
 			);

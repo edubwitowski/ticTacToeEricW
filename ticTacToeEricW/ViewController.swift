@@ -10,15 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var zero: UIImageView!
-    @IBOutlet weak var one: UIImageView!
-    @IBOutlet weak var two: UIImageView!
-    @IBOutlet weak var four: UIImageView!
-    @IBOutlet weak var five: UIImageView!
-    @IBOutlet weak var six: UIImageView!
-    @IBOutlet weak var seven: UIImageView!
-    @IBOutlet weak var eight: UIImageView!
-    @IBOutlet weak var nine: UIImageView!
+    @IBOutlet weak var button1: UIButton!
+    @IBAction func button1(_ sender: UIButton) {
+    }
     
     
     

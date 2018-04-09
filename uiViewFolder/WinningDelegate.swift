@@ -1,25 +1,25 @@
 //
-//  nextmove.swift
+//  WinningDelegate.swift
 //  ticTacToeEricW
 //
-//  Created by Macbook on 1/30/18.
+//  Created by Macbook on 4/9/18.
 //  Copyright © 2018 Eric Witowski. All rights reserved.
 //
 
 import Foundation
-protocol TicTacToeDelegate: class {
+protocol WinningDelegate: class {
     func computerPlayedPosition(_ position: Int)
     func player(_ player: Player, wonWithPositions positions: [Int])
     func gameInStalement()
 }
 
-class TicTacToe
+class Winning
 {
     
     var numberOfPositions: Int {
         return 9
     }
-    weak var delegate: TicTacToeDelegate?
+    weak var delegate: WinningDelegate?
     
     
     fileprivate var xBoard = 0
@@ -78,7 +78,7 @@ class TicTacToe
         }
     }
     
-   
+    
     
     fileprivate func nobodyCanWin() -> Bool {
         return ((xBoard | oBoard) == 0x1FF)
@@ -95,7 +95,7 @@ class TicTacToe
         }
     }
     
-   
+    
     
     
     
@@ -148,7 +148,7 @@ class TicTacToe
         let checkBit = 1 << position
         return ((xBoard & checkBit) == 0) && ((oBoard & checkBit) == 0)
     }
-   
+    
     
     fileprivate func isWinnerBoard(_ board: Int) -> Bool
     {

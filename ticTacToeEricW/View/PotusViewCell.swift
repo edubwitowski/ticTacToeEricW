@@ -1,6 +1,12 @@
 //
-//  TicTacToeViewCell.swift
+//  PotusViewCell.swift
 //  ticTacToeEricW
+//
+//  Created by Macbook on 4/11/18.
+//  Copyright © 2018 Eric Witowski. All rights reserved.
+//
+
+
 //
 //  Created by Macbook on 4/4/18.
 //  Copyright © 2018 Eric Witowski. All rights reserved.
@@ -9,7 +15,7 @@
 import UIKit
 
 
-class myCollectionViewCell: UICollectionViewCell {
+class PotusViewCell: UICollectionViewCell {
     
     //MARK: Public vars
     

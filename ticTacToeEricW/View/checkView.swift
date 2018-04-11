@@ -1,15 +1,15 @@
 //
-//  checkView.swift
+//  CheckView.swift
 //  ticTacToeEricW
 //
-//  Created by Macbook on 4/9/18.
+//  Created by Macbook on 4/11/18.
 //  Copyright © 2018 Eric Witowski. All rights reserved.
-//
+
 
 import UIKit
 import QuartzCore
 
-class checkView: UIView
+class CheckView: UIView
 {
     
     //MARK: Public var

@@ -8,14 +8,14 @@
 
 import Foundation
 
-class Tournament {
+class TournamentPlay {
     var gamesPlayed = 0
     var gamesWonByX = 0
     var gamesWonByO = 0
     
-    var game = TicTacToe()
+    var game = TicTacToePotus()
     
     func newGame() {
-        game = TicTacToe()
+        game = TicTacToePotus()
     }
 }

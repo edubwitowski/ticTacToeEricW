@@ -1,25 +1,25 @@
 //
-//  WinningDelegate.swift
+//  TicTacToePotus.swift
 //  ticTacToeEricW
 //
-//  Created by Macbook on 4/9/18.
+//  Created by Macbook on 4/10/18.
 //  Copyright © 2018 Eric Witowski. All rights reserved.
 //
 
 import Foundation
-protocol WinningDelegate: class {
+protocol TicTacToePotusDelegate: class {
     func computerPlayedPosition(_ position: Int)
     func player(_ player: Player, wonWithPositions positions: [Int])
     func gameInStalement()
 }
 
-class Winning
+class TicTacToePotus
 {
     
     var numberOfPositions: Int {
         return 9
     }
-    weak var delegate: WinningDelegate?
+    weak var delegate: TicTacToePotusDelegate?
     
     
     fileprivate var xBoard = 0
@@ -189,3 +189,4 @@ class Winning
     }
     
 }
+

@@ -1,5 +1,5 @@
 //
-//  ticTacToeMainViewController.swift
+//  PotusViewController.swift
 //  ticTacToeEricW
 //
 //  Created by Macbook on 4/9/18.
@@ -9,14 +9,14 @@
 import UIKit
 
 
-class ticTacToeMainViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, TicTacToeDelegate
+class potusViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, TicTacToePotusDelegate
 {
     
     //MARK: Private var
     fileprivate struct StoryBoard
     {
-        static let cellReuseIdentifier = "MyCollectionViewCell"
-        static let footerReuseIdentifier = "StatsView"
+        static let cellReuseIdentifier = "NaughtyCell"
+        static let footerReuseIdentifier = "PotusFooter"
         static let navBarSpacing = CGFloat(64.0)
         static let cellsPerRow = 3
     }
@@ -28,9 +28,9 @@ class ticTacToeMainViewController: UICollectionViewController, UICollectionViewD
         static let title = "Game over!"
         static let ok = "Ok"
     }
-    fileprivate let tournament = Tournament()
+    fileprivate let tournamentPlay = TournamentPlay()
     var gameOver = false
-    fileprivate weak var statsView: myCollectionViewCell!
+    fileprivate weak var potusFooter: PotusViewCell!
     
     
     //MARK: View controller lifecycle
@@ -38,7 +38,7 @@ class ticTacToeMainViewController: UICollectionViewController, UICollectionViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tournament.game.delegate = self
+        tournamentPlay.game.delegate = self
         
         navigationController?.navigationBar.tintColor = .white
         navigationItem.leftBarButtonItem?.tintColor = UIColor.white
@@ -60,17 +60,18 @@ class ticTacToeMainViewController: UICollectionViewController, UICollectionViewD
     
     //MARK: - Actions
     
-    @IBAction func playAgainButton(_ sender: UIButton)
+    
+    @IBAction func pressedResetButton(_ sender: UIButton)
     {
-        for i in 0..<tournament.game.numberOfPositions {
+        for i in 0..<tournamentPlay.game.numberOfPositions {
             let path = IndexPath(item: i, section: 0)
-            if let cell = collectionView?.cellForItem(at: path) as? TicTacToeViewCell {
-                cell.mark = nil
+            if let cell = collectionView?.cellForItem(at: path) as? PotusViewCell {
+                cell.check = nil
                 cell.isInWinningPath = false
             }
         }
-        tournament.newGame()
-        tournament.game.delegate = self
+        tournamentPlay.newGame()
+        tournamentPlay.game.delegate = self
         gameOver = false
     }
     
@@ -83,7 +84,7 @@ class ticTacToeMainViewController: UICollectionViewController, UICollectionViewD
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return tournament.game.numberOfPositions
+        return tournamentPlay.game.numberOfPositions
     }
     
     
@@ -91,15 +92,15 @@ class ticTacToeMainViewController: UICollectionViewController, UICollectionViewD
     {
         var reuseView = UICollectionReusableView()
         if kind == UICollectionElementKindSectionFooter {
-            statsView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: StoryBoard.footerReuseIdentifier, for: indexPath) as! TicTacToeFooterView
-            reuseView = statsView
+            potusFooterView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: StoryBoard.footerReuseIdentifier, for: indexPath) as! PotusFooterView
+            reuseView = potusFooterView
         }
         
         return reuseView
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StoryBoard.cellReuseIdentifier, for: indexPath) as! TicTacToeViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StoryBoard.cellReuseIdentifier, for: indexPath) as! PotusViewCell
         
         return cell
     }
@@ -107,11 +108,11 @@ class ticTacToeMainViewController: UICollectionViewController, UICollectionViewD
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard !gameOver else { return }
         
-        if let cell = collectionView.cellForItem(at: indexPath) as? TicTacToeViewCell {
-            guard !cell.marked else { return }
+        if let cell = collectionView.cellForItem(at: indexPath) as? PotusViewCell {
+            guard !cell.checked else { return }
             
-            cell.mark = .x
-            tournament.game.playPosition(indexPath.item, forPlayer: .x)
+            cell.check = .x
+            tournamentPlay.game.playPosition(indexPath.item, forPlayer: .x)
         }
     }
     
@@ -137,12 +138,12 @@ class ticTacToeMainViewController: UICollectionViewController, UICollectionViewD
     }
     
     
-    //MARK: - TicTacToeViewCellDelegate
+    //MARK: - PotusViewCellDelegate
     
     func computerPlayedPosition(_ position: Int) {
         let cellPath = IndexPath(item: position, section: 0)
-        if let cell = collectionView?.cellForItem(at: cellPath) as? TicTacToeViewCell {
-            cell.mark = .o
+        if let cell = collectionView?.cellForItem(at: cellPath) as? PotusViewCell{
+            cell.check = .o
         }
     }
     
@@ -150,28 +151,28 @@ class ticTacToeMainViewController: UICollectionViewController, UICollectionViewD
         var message: String = ""
         switch player {
         case .x:
-            tournament.gamesWonByX += 1
+            tournamentPlay.gamesWonByX += 1
             message = AlertMessage.youWin
         default:
-            tournament.gamesWonByO += 1
+            tournamentPlay.gamesWonByO += 1
             message = AlertMessage.youLoose
         }
-        tournament.gamesPlayed += 1
+        tournamentPlay.gamesPlayed += 1
         gameOver = true
-        statsView.updateStatsForGame(tournament)
+        potusFooterView.updateStatsForGame(tournamentPlay)
         showAlertMessage(message)
         for position in positions {
             let indexPath = IndexPath(item: position, section: 0)
-            if let cell = collectionView?.cellForItem(at: indexPath) as? TicTacToeViewCell {
+            if let cell = collectionView?.cellForItem(at: indexPath) as? PotusViewCell {
                 cell.isInWinningPath = true
             }
         }
     }
     
     func gameInStalement() {
-        tournament.gamesPlayed += 1
+        tournamentPlay.gamesPlayed += 1
         gameOver = true
-        statsView.updateStatsForGame(tournament)
+        potusFooterView.updateStatsForGame(tournamentPlay)
         showAlertMessage(AlertMessage.nobodyWins)
     }
     

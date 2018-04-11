@@ -1,8 +1,8 @@
 //
-//  crossandnought.swift
+//  Player.swift
 //  ticTacToeEricW
 //
-//  Created by Macbook on 1/30/18.
+//  Created by Macbook on 4/11/18.
 //  Copyright © 2018 Eric Witowski. All rights reserved.
 //
 
@@ -11,3 +11,4 @@ enum Player {
     case x
     case o
 }
+
